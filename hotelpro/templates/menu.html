@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="food-section mt-5">
+    <div class="container">
+        <div class="text-center">
+            <h2>Our Special Menu</h2>
+        </div>
+        <div class="filters-content">
+            <div class="row grid">
+                {% for i in items %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="food-box">
+                        <div>
+                            <div class="food-img">
+                                <img src="/media/{{i.Image}} " alt="menu">
+                            </div>
+                            <div class="food-detail">
+                                <h5>
+                                    {{i.Item_name}}
+                                </h5>
+                                <p class="description">
+                                    {{i.description}}
+                                </p>
+                                <div class="options">
+                                    <h6>
+                                        ₹{{i.Price}}
+                                    </h6>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="btn-box">
+            <a href="">View More</a>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

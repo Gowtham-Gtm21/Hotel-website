@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .bg-box {
+        background: url("{% static 'images/hero-bg.jpg' %}") no-repeat center center/cover;
+        width: 100%;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    .detail-box {
+        max-width: 680px;
+        margin-bottom: 140px;
+    }
+
+    .detail-box h1 {
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .detail-box p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .btn-box a {
+        display: inline-block;
+        padding: 10px 55px;
+        background-color: #f8b119;
+        color: #ffffff;
+        border-radius: 45px;
+        transition: all 0.3s ease-in-out;
+        border: none;
+        margin-top: 10px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-box a:hover {
+        background-color: #f1a90f;
+        transform: scale(1.05);
+    }
+
+    /* offer-section */
+    .offer-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 40px 0;
+    }
+
+    .box {
+        background-color: #1e2128;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 40px;
+        max-width: 550px;
+        min-width: 300px;
+        flex: 1;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .img-box {
+        flex: 0 0 120px;
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 5px solid #ffbe33;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        transition: all 0.3s;
+    }
+
+    .img-box img:hover {
+        transform: scale(1.1);
+    }
+
+    .offer-detail {
+        flex: 1;
+        padding-left: 50px;
+        color: #ffffff;
+    }
+
+    .offer-detail h5 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .offer-detail h6 {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .offer-detail h6 span {
+        font-size: 1.5rem;
+        color: #ffbe33;
+    }
+
+    .offer-detail a {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #f8b119;
+        color: #ffffff;
+        border-radius: 45px;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .offer-detail a:hover {
+        background-color: #f1a90f;
+        transform: scale(1.05);
+    }
+    
+
+    @media (max-width: 1024px) {
+        .detail-box h1 {
+            font-size: 2.5rem;
+        }
+
+        .bg-box {
+            min-height: 75vh;
+        }
+    }
+
+    @media (max-width: 860px) {
+        .bg-box {
+            min-height: 65vh;
+        }
+       
+        .detail-box h1 {
+            font-size: 2rem;
+        }
+
+        .detail-box p {
+            font-size: 0.95rem;
+        }
+
+        .btn-box a {
+            padding: 12px 40px;
+            font-size: 1rem;
+        }
+
+        .box {
+            flex-direction: column;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .img-box {
+            margin-bottom: 15px;
+        }
+
+        .offer-detail {
+            padding-left: 0;
+        }
+    }
+
+    @media (max-width: 550px){
+        .box {
+            flex-direction: row;
+            text-align: left;
+            padding: 25px;
+        }
+
+        .img-box {
+            margin-bottom: 0;
+        }
+
+        .offer-detail {
+            padding-left: 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .bg-box {
+            min-height: 80vh;
+        }
+
+        .detail-box h1 {
+            font-size: 1.75rem;
+        }
+
+        .detail-box p {
+            font-size: 0.8rem;
+        }
+
+        .btn-box a {
+            padding: 10px 30px;
+            font-size: 0.95rem;
+        }
+        
+        .box {
+            flex-direction: column;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .img-box {
+            margin-bottom: 15px;
+        }
+
+        .offer-detail {
+            padding-left: 0;
+        }
+    }
+
+</style>
+
+<div class="bg-box">
+    <div class="container">
+        <div class="detail-box">
+            <h1>Fast Food Restaurant</h1>
+            <p>
+                Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam
+                quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos
+                nihil ducimus libero ipsam.
+            </p>
+            <div class="btn-box">
+                <a href="#" class="btn">Order Now <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="offer-section">
+        <div class="box">
+            <div class="img-box">
+                <img src="{% static 'images/burger.jpg' %}" alt="Burger Offer"> 
+            </div>
+            <div class="offer-detail">
+                <h5>Tasty Thursdays</h5>
+                <h6><span>20%</span> Off</h6>
+                <a href="#">Order Now <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    
+        <div class="box">
+            <div class="img-box">
+                <img src="{% static 'images/pizza.jpg' %}" alt="Pizza Offer"> 
+            </div>
+            <div class="offer-detail">
+                <h5>Pizza Days</h5>
+                <h6><span>15%</span> Off</h6>
+                <a href="#">Order Now <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="food-section mt-5">
+    <div class="container">
+        <div class="text-center">
+            <h2>
+                Our Special Menu
+            </h2>
+        </div>
+
+        <div class="filters-content">
+            <div class="row grid">
+                {% for i in items %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="food-box">
+                        <div>
+                            <div class="food-img">
+                                <img src="/media/{{i.Image}} " alt="menu">
+                            </div>
+                            <div class="food-detail">
+                                <h5>
+                                    {{i.Item_name}}
+                                </h5>
+                                <p class="description">
+                                    {{i.description}}
+                                </p>
+                                <div class="options">
+                                    <h6>
+                                        ₹{{i.Price}}
+                                    </h6>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="btn-box">
+            <a href="#">View More</a>
+        </div>
+    </div>
+</section>
+
+<section class="book-section layout-padding">
+    <div class="container">
+        <div class="heading-container">
+            <h2>Book A Table</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <form action="{% url 'book' %}" method="POST">
+                        {% csrf_token %}
+                        <div>
+                            <input type="text" class="form-control" name="user-name" required placeholder="Your Name">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="phone-number" required placeholder="Phone Number">
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" name="user-email" placeholder="Your Email">
+                        </div>
+                        <div>
+                            <select class="form-control nice-select" required name="total-person">
+                                <option value="" disabled selected>How many persons?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" name="booking-date" placeholder="Booking Date" onfocus="(this.type='date')" required>
+                        </div>
+                        <div class="btn-box">
+                            <button>Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d99891.50926776032!2d2.316669173058534!3d48.859156644822974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sBurger%20King!5e0!3m2!1sen!2sin!4v1743340498435!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

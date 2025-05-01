@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .about-section {
+        min-height: 65vh;
+        background: #212529;
+        color: #ffffff;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-section .row {
+        align-items: center;
+    }
+
+    .about-section .img-box {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-section .img-box img {
+        width: 100%;
+        max-width: 445px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .about-section .detail-box p {
+        margin-top: 15px;
+    }
+
+    .about-section .detail-box a {
+        display: inline-block;
+        padding: 10px 45px;
+        background-color: #ffbe33;
+        color: #ffffff;
+        border-radius: 45px;
+        transition: all 0.3s;
+        border: none;
+        margin-top: 15px;
+    }
+
+    .about-section .detail-box a:hover {
+        background-color: #e69c00;
+    }
+
+    @media (max-width: 767px) {
+        .about-section .row {
+            flex-direction: column-reverse;
+        }
+    }
+</style>
+
+<section class="about-section layout-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="img-box">
+                    <img src="{% static 'images/about-img.png' %} " alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <div class="heading-container">
+                        <h2>We Are Burger King</h2>
+                    </div>
+                    <div>
+                        <p>Burger King is known for serving high-quality, great-tasting, and affordable food. Founded in 1954, Burger King is the second largest fast food hamburger chain in the world. The original Home of the Whopper, our commitment to premium ingredients, signature recipes, and family-friendly dining experiences is what has defined our brand for 70 successful years.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

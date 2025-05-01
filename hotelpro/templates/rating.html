@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .review-container {
+        background-image: url("{% static 'images/hero.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        min-height: 90vh;
+        padding: 67px 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background: #fff;
+        width: 100%;
+        max-width: 750px;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-container h1 {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #f8b119;
+    }
+
+    .rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: start;
+        gap: 8px;
+    }
+
+    .rating input {
+        display: none;
+    }
+
+    .rating label {
+        color: #ccc;
+        cursor: pointer;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked ~ label {
+        color: #f8b119;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .form-actions button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #f8b119;
+        color: #ffffff;
+        border-radius: 45px;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 600;
+        border: none;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    
+    .form-actions button:hover {
+        background-color: #f1a90f;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 1030px) {
+        .review-container {
+            min-height: 70vh;
+        }
+    }
+
+    @media (max-width: 850px) {
+        .form-container h1 {
+            font-size: 20px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .form-actions button {
+            font-size: 14px;
+        }
+
+        .rating label {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .review-container {
+            min-height: 92vh;
+        }
+
+        .form-container {
+            padding: 20px;
+        }
+
+        .form-container h1 {
+            font-size: 18px;
+        }
+
+        .form-actions button {
+            font-size: 12px;
+            padding: 10px 15px;
+        }
+    }
+</style>
+
+<div class="review-container">
+    <div class="form-container">
+        <h1>Share Your Feedback</h1>
+        <form method="POST" action="{% url 'index' %}" onsubmit="return showAlert()">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="user-name">Your Name<span aria-hidden="true">*</span></label>
+                <input type="text" id="user-name" name="user-name" placeholder="Type Your Name" required>
+            </div>
+            <div class="form-group">
+                <label>Rate Us<span aria-hidden="true">*</span></label>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" required>
+                    <label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1">★</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="experience">Tell us about your experience<span aria-hidden="true">*</span></label>
+                <textarea id="experience" name="experience" rows="3" placeholder="Share your experience here..." required></textarea>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit Review</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showAlert() {
+        alert("Your review has been submitted");
+        return true;
+    }
+</script>
+
+{% endblock %}

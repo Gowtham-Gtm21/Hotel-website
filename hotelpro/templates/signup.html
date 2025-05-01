@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .signup-container {
+        background-image: url("{% static 'images/hero.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        min-height: 90vh;
+        padding: 60px 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signup-box {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 8px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #000;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .input-group input:focus {
+        border-color: #f8b119;
+    }
+
+    .signup-btn {
+        padding: 10px;
+        border: none;
+        background-color: #f8b119;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .login-text {
+        font-size: 14px;
+    }
+
+    .login-link {
+        color: #f8ad0c;
+        text-decoration: none;
+    }
+
+    @media (max-width: 1030px) {
+        .signup-container {
+            min-height: 70vh;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .signup-box {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .signup-container {
+            min-height: 90vh;
+        }
+    }
+
+</style>
+
+<div class="signup-container">
+    <div class="signup-box">
+        <h2>Signup</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Create a password" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="confirmpassword" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="signup-btn">Signup</button>
+            <h5 class="login-text">Already have an account? <a href="{% url 'login' %}" class="login-link">Login</a></h5>
+        </form>
+    </div>
+</div>
+
+{% for message in messages %}
+<script>
+    alert("{{ message|escapejs }}");
+</script>
+{% endfor %}
+
+{% endblock %}
